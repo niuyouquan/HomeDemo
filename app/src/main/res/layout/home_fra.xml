@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zhy="http://schemas.android.com/tools"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    app:srlEnablePreviewInEditMode="false">
+
+    <com.scwang.smartrefresh.layout.header.ClassicsHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srlAccentColor="@color/normal_blue" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:theme="@style/ToolbarTheme">
+            <!--app:layout_scrollFlags="scroll|enterAlways"-->
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:contentScrim="@color/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical"
+                    android:scaleType="centerInside">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+                        <!--↓ banner-->
+                        <ImageView
+                            android:id="@+id/banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/image_practice_repast_1" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color_f8f8f8" />
+
+                        <com.nyq.homedemo.FixedGridView
+                            android:id="@+id/fixedGridView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:numColumns="3"
+                            android:scrollbars="none"
+                            android:stretchMode="columnWidth" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color_f8f8f8" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp">
+
+                            <ImageView
+                                android:id="@+id/iv_topline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:padding="@dimen/dp_10"
+                                android:src="@mipmap/home_icon_top_line" />
+
+                            <TextView
+                                android:id="@+id/up_line"
+                                android:layout_width="0.5dp"
+                                android:layout_height="40dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iv_topline"
+                                android:background="#ebebeb" />
+
+                            <com.nyq.homedemo.UPMarqueeView
+                                android:id="@+id/upview1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/up_line" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:background="@color/divider_color_f8f8f8" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/dp_10"
+                            android:paddingTop="@dimen/dp_8"
+                            android:text="热门科室"
+                            android:textColor="@color/text_color_b4b4b4"
+                            android:textSize="@dimen/dp_16" />
+
+                        <com.zhy.view.flowlayout.TagFlowLayout
+                            android:id="@+id/id_flowlayout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="120dp"
+                            android:padding="4dp"
+                            zhy:max_select="1" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:background="@color/divider_color_f0f0f0" />
+
+                    </LinearLayout>
+                    <!--layout_collapseMode设置LinearLayout可随着滑动控件的滑动而滑动 -->
+                    <!--layout_collapseParallaxMultiplier视差因子 -->
+                </LinearLayout>
+
+                <include layout="@layout/layout_toobar" />
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+
+            <!--tablayout在收缩的时候不会消失，所以这里放在appBarLayout里面，appBarLayout是LinearLayout的子类，所以不影响上面的toolbar-->
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tl_main_tabtop"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/normal_blue"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/normal_blue"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                app:tabTextColor="@color/text_color_b4b4b4" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_color_f0f0f0" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nsv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
